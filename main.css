@@ -2,6 +2,13 @@
     margin: 0;
     padding: 0;
 }
+.clearfix::after{
+    content: ".";
+    display: block;
+    height: 0;
+    visibility: hidden;
+    clear: both;
+}
 #wrapper{
     width: 90%;
     margin: 0 auto;
@@ -12,22 +19,88 @@ header h1{
     background-color: blueviolet;
     color: white;
 }
-nav{
+
+/* multi_drop-menu realisition */
+/*  top menu */
+/* visual style */
+nav.multi_drop_menu{
     background-color: orange;
+    font: 1em helvetica,arial,sans-serif;
 }
-.clearfix::after{
-    content: ".";
+nav.multi_drop_menu a{
     display: block;
-    height: 0;
-    visibility: hidden;
-    clear: both;
+    color: #555;
+    background-color: #eee;
+    padding: .2em 1em;
+    border-width: 3px;
+    border-color: transparent;
 }
-nav ul li{
+nav.multi_drop_menu a:hover{
+    color: #fff;
+    background-color: #aaa;
+}
+nav.multi_drop_menu a:active{
+    color: #ccc;
+    background-color: #fff;
+}
+/* function style */
+nav.multi_drop_menu ul{
+    float: left;                   /* 为了ul包围住li */
+}
+nav.multi_drop_menu li{
     float: left;
-    list-style-type: none;
-    padding-right: 30px;
-    border-right: 2px solid black;
+    list-style-type:none;
+    position: relative;                /* 为子菜单提供定位上下文 */
 }
+nav.multi_drop_menu li a{
+    display:block;
+    border-right-style: solid;
+    background-clip: padding-box;      
+    text-decoration: none;
+}
+nav.multi_drop_menu li:last-child a{
+    border-right-style: none;
+}
+nav.multi_drop_menu li:first-child a{
+    border-left: 5px solid transparent;
+}
+
+/* 2nd menu */
+/* visual style */
+nav.multi_drop_menu li ul{
+    width: 8em;
+}
+nav.multi_drop_menu li li a{
+    border-right-style: none;
+    border-top-style: solid;
+}
+/* function style */
+nav.multi_drop_menu li ul{
+    display:none;
+    position: absolute;      /* 相对父菜单定位 */
+    left:0;
+    top: 100%;
+}
+nav.multi_drop_menu li:hover > ul{
+    display: block;
+}
+nav.multi_drop_menu li li{
+    float: none;
+}
+/* 3rd menu */
+nav.multi_drop_menu li li ul{
+    position: absolute;
+    left: 100%;
+    top: 0;
+}
+/* show the path you choose */
+nav.multi_drop_menu li:hover > a{
+    color: #fff;
+    background-color: #aaa;
+}
+
+
+
 section#titlepic{
     width: 100%;
     height: 80px;

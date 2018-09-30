@@ -35,22 +35,32 @@ section#titlepic{
 }
 
 section#partsection3{
-    border: 0 0 2px 0 solid orange;
+    border-top: 8px solid orange;
+    border-bottom: 8px solid orange;
 }
 
 section#partsection3 article{
     width: 33.33%;
+    height: 350px;
     float: left;
-    background-color: aqua;
+    background-color:white;
+    display: flex;                      /* 用于子元素垂直方向居中 */
+    align-items: center; 
 }
 
 
 section#partsection3 article div{
-    margin: 10px 30px 20px 30px;
+    margin-left: 30px;
+    margin-right: 30px;
     padding: 20px;
-    border: 2px solid white;
 }
 
-section#partsection3  div{
-    
+section#partsection3 article:nth-child(1) div{
+    border: 2px solid aqua;
+}
+section#partsection3 article:nth-child(2) div{
+    border: 2px solid orange;
+}
+section#partsection3 article:nth-child(3) div{
+    border: 2px solid greenyellow;
 }
